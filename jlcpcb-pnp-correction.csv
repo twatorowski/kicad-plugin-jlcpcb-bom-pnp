@@ -1,0 +1,50 @@
+# JLCPCB Relative Rotation (+90 deg -> CCW, -90 deg -> CW)
+# JLCPCB Relative Offset X (+X - right, -X left)
+# JLCPCB Relative Offset Y (+Y - up, -Y down)
+
+Footprint, Rotation, X, Y
+
+R_0603_1608Metric,0,0,0
+LED_0603_1608Metric,0,0,0
+PinSocket_2x03_P2.00mm_Vertical_SMD,0,0,0
+BUZZER-5020,0,0,0
+C_0603_1608Metric,0,0,0
+C_0402_1005Metric,0,0,0
+C_0805_2012Metric,0,0,0
+CP_Elec_6.3x5.9,0,0,0
+D_SOD-323,0,0,0
+D_SOD-123F,0,0,0
+L_0603_1608Metric,0,0,0
+USB_C_Receptacle_G-Switch_GT-USB-7010ASV,0,0,0
+Molex_Mini-Fit_Jr_5566-02A_2x01_P4.20mm_Vertical,180,0,0
+JST_XA_B03B-XASK-1-A_1x03_P2.50mm_Vertical,180,0,0
+JST_XH_B2B-XH-A_1x02_P2.50mm_Vertical,180,0,0
+L_Sunlord_SWPA5040S,0,0,0
+SOT-23,180,0,0
+DFN-8-1EP_2x2mm_P0.5mm_EP0.9x1.6mm,0,0,0
+WS100SxxxxDS,-90,0,0
+SOP-16_3.9x9.9mm_P1.27mm,-90,0,0
+DFN-8-1EP_2x2mm_P0.5mm_EP0.9x1.6mm,0,0,0
+SOIC-8_3.9x4.9mm_P1.27mm,-90,0,0
+Crystal_SMD_3225-4Pin_3.2x2.5mm,0,0,0
+R_0402_1005Metric,0,0,0
+R_0805_2012Metric,0,0,0
+LQFP-64_10x10mm_P0.5mm,-90,0,0
+DFN-10-1EP_3x3mm_P0.5mm_EP1.7x2.5mm,-90,0,0
+Texas_VQFN-RNR0011A-11,0,0,0
+SOT-23-5,180,0,0
+QFN-16-1EP_3x3mm_P0.5mm_EP1.7x1.7mm,-90,0,0
+SOT-23-6,-90,0,0
+PinHeader_1x07_P2.54mm_Vertical,-90,0,0
+PinHeader_2x03_P2.00mm_Vertical_SMD,-90,0,0
+SSOP-16_3.9x4.9mm_P0.635mm,-90,0,0
+Relay_DPDT_Omron_G2RL-2,-90,12.5,3.6
+Wago 256-403,180,0,0
+JST_PH_B3B-PH-SM4-TB_1x03-1MP_P2.00mm_Vertical,180,0,-0.5
+JST_PH_B2B-PH-SM4-TB_1x02-1MP_P2.00mm_Vertical,180,0,-0.5
+JST_PH_B4B-PH-SM4-TB_1x04-1MP_P2.00mm_Vertical,180,0,-0.5
+SOT-23-3,180,0,0
+JST_SH_BM06B-SRSS-TB_1x06-1MP_P1.00mm_Vertical,180,0,0
+JST_SH_BM06B-SRSS-TB_1x06-1MP_P1.00mm_Vertical,180,0,0
+JST_SH_BM08B-SRSS-TB_1x08-1MP_P1.00mm_Vertical,0,0,0
+ESP8266-01,90,0,0
