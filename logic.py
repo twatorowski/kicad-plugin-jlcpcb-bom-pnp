@@ -187,10 +187,6 @@ def generate_pnp_list(components: dict, headers: dict[str, str],
             x -= global_offset[0]
             y -= global_offset[1]
 
-        # y coordinate negation
-        if negate_y:
-            y = -y
-
         # got correction data for this footprint?
         if pnp_correction:
             # rotation and offset entry
@@ -215,13 +211,15 @@ def generate_pnp_list(components: dict, headers: dict[str, str],
                 rot = (rot + rot_c) % 360
                 # got the rotation, apply it to offset
                 if rot:
-                    xo = xo * math.sin(math.radians(rot))
-                    yo = yo * math.cos(math.radians(rot))
+                    xo = xo * math.cos(math.radians(rot))
+                    yo = yo * math.sin(math.radians(rot))
                 # use the offset to update the position and orientation
                 x += xo
                 y += yo
 
-
+        # y coordinate negation
+        if negate_y:
+            y = -y
 
 
         # this will hold the line (love is not always on timeee! whou whou whou!
