@@ -37,6 +37,11 @@ def build_component_dict(board: pcbnew.BOARD):
         comps[ref] = fp.GetFieldsText()
         # store the reference to the component itself
         comps[ref]['_'] = fp
+        
+        # kicad 9.0 does not present the 'Footprint' as the field
+        if 'Footprint' not in comps[ref]:
+            comps[ref]['Footprint'] = str(fp.GetFPID().GetLibItemName())
+        
     # return the component dictionary
     return comps
 
