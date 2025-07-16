@@ -159,6 +159,17 @@ def load_pnp_correction_data(fname: str):
     return { l['Footprint']: l for l in lines if 'Footprint' in l }
 
 
+# rotate a point around the origin (CCW)
+def rotate(x, y, angle):
+    cos = math.cos(math.radians(angle))
+    sin = math.sin(math.radians(angle))
+    # do the rotation
+    rot_x = x * cos - y * sin
+    rot_y = x * sin + y * cos
+    # return the new coordinates 
+    return rot_x, rot_y
+    
+
 # generate a list of lines for the pick and place
 def generate_pnp_list(components: dict, headers: dict[str, str],
     filter_func = None, pnp_correction:dict = None, output_funcs = None,
@@ -186,12 +197,15 @@ def generate_pnp_list(components: dict, headers: dict[str, str],
         x, y = pcbnew.ToMM(vec.x), pcbnew.ToMM(vec.y)
         # get the orientation
         rot = c.GetOrientationDegrees() % 360
-
+        
         # global offsets
         if global_offset is not None:
             x -= global_offset[0]
             y -= global_offset[1]
-
+        # apply negation if needed
+        if negate_y:
+            y = -y
+        
         # got correction data for this footprint?
         if pnp_correction:
             # rotation and offset entry
@@ -210,21 +224,24 @@ def generate_pnp_list(components: dict, headers: dict[str, str],
             if corr:
                 # load position offsets
                 xo, yo = float(corr.get('X', 0)), float(corr.get('Y', 0))
-                # load rotation correction
-                rot_c = float(corr.get('Rotation'))
+                # kicad rotation at which we measured the offset
+                kicad_rot = float(corr.get('KiCad_Rotation'))
+                # undo the angle at which the offset was measured
+                xo, yo = rotate(xo, yo, -kicad_rot)
+                
+                # if the current component is rotated we need to rotate the 
+                # offset vector with it 
+                if rot:
+                    xo, yo = rotate(xo, yo, rot)
+                
+                # load rotation correction for the jlc
+                rot_c = float(corr.get('JLC_Rotation'))
                 # update rotation
                 rot = (rot + rot_c) % 360
-                # got the rotation, apply it to offset
-                if rot:
-                    xo = xo * math.cos(math.radians(rot))
-                    yo = yo * math.sin(math.radians(rot))
+                
                 # use the offset to update the position and orientation
                 x += xo
                 y += yo
-
-        # y coordinate negation
-        if negate_y:
-            y = -y
 
 
         # this will hold the line (love is not always on timeee! whou whou whou!

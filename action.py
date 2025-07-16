@@ -79,6 +79,7 @@ class Action(pcbnew.ActionPlugin):
             }, filter_func=lambda c: c.get('Distributor', '').lower() == 'jlcpcb',
             pnp_correction=pnp_correction,
             global_offset=drill_place_offset,
+            # in kicad component positions have y going positive as the component goes down the screen
             negate_y=True
         )
         # dump to csv
